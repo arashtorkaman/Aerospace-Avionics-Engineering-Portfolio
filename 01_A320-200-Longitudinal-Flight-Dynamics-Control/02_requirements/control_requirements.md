@@ -34,11 +34,11 @@ The baseline pitch-rate damper receives pitch-rate perturbation and produces an 
 
 The conceptual relationship is
 
-$$
+```math
 \Delta\delta_{e,\mathrm{damp}}
 =
 K_q\Delta q,
-$$
+```
 
 where $K_q$ is a **signed design gain**.
 
@@ -46,13 +46,13 @@ The sign of $K_q$ shall be selected from the adopted aircraft/control sign conve
 
 The total elevator perturbation may be represented as
 
-$$
+```math
 \Delta\delta_{e,\mathrm{total}}
 =
 \Delta\delta_{e,\mathrm{pilot/cmd}}
 +
 \Delta\delta_{e,\mathrm{damp}}.
-$$
+```
 
 For disturbance-rejection tests, the external command may be set to zero.
 
@@ -62,9 +62,9 @@ For disturbance-rejection tests, the external command may be set to zero.
 
 The pitch-rate damper shall use longitudinal pitch-rate perturbation
 
-$$
+```math
 \Delta q
-$$
+```
 
 as its feedback input.
 
@@ -74,9 +74,9 @@ as its feedback input.
 
 The pitch-rate damper shall produce an incremental equivalent elevator command
 
-$$
+```math
 \Delta\delta_{e,\mathrm{damp}}.
-$$
+```
 
 **Verification:** Interface inspection.
 
@@ -84,11 +84,11 @@ $$
 
 Before saturation or actuator dynamics are applied, the baseline damping command shall be calculated as
 
-$$
+```math
 \Delta\delta_{e,\mathrm{damp}}
 =
 K_q\Delta q.
-$$
+```
 
 **Verification:** Unit test with analytically calculated inputs.
 
@@ -96,15 +96,15 @@ $$
 
 For
 
-$$
+```math
 \Delta q=0,
-$$
+```
 
 the unsaturated pitch-damping correction shall satisfy
 
-$$
+```math
 \Delta\delta_{e,\mathrm{damp}}=0.
-$$
+```
 
 **Verification:** Unit test.
 
@@ -112,12 +112,12 @@ $$
 
 The controller configuration shall store $K_q$ as a signed quantity in units consistent with
 
-$$
+```math
 \frac{\mathrm{rad\ of\ elevator}}
 {\mathrm{rad/s\ of\ pitch\ rate}}
 =
 \mathrm{s}.
-$$
+```
 
 **Verification:** Design and unit review.
 
@@ -135,7 +135,7 @@ The verification shall demonstrate damping action for both positive and negative
 
 For the baseline state ordering
 
-$$
+```math
 x_L
 =
 \begin{bmatrix}
@@ -144,23 +144,23 @@ x_L
 \Delta q &
 \Delta\theta
 \end{bmatrix}^{\mathsf{T}},
-$$
+```
 
 the pitch-rate output selection vector shall be
 
-$$
+```math
 C_q
 =
 \begin{bmatrix}
 0 & 0 & 1 & 0
 \end{bmatrix}.
-$$
+```
 
 Thus,
 
-$$
+```math
 \Delta q=C_qx_L.
-$$
+```
 
 **Verification:** Analytical inspection.
 
@@ -168,17 +168,17 @@ $$
 
 When the unsaturated feedback law is represented as
 
-$$
+```math
 \Delta\delta_e=K_qC_qx_L,
-$$
+```
 
 the corresponding linear closed-loop state matrix shall be
 
-$$
+```math
 A_{CL}
 =
 A_L+B_LK_qC_q.
-$$
+```
 
 If a later implementation defines the law using an explicit negative sign, the algebra and stored gain convention shall be updated together so the physical feedback direction remains unchanged.
 
@@ -188,11 +188,11 @@ If a later implementation defines the law using an explicit negative sign, the a
 
 The controller-design process shall calculate
 
-$$
+```math
 \lambda_{CL,i}
 =
 \operatorname{eig}(A_{CL})
-$$
+```
 
 for every evaluated gain candidate.
 
@@ -249,9 +249,9 @@ A gain shall not be baselined solely because a plotted response appears visually
 
 At the nominal operating point, the selected unsaturated linear controller shall produce
 
-$$
+```math
 \operatorname{Re}(\lambda_{CL,i})<0
-$$
+```
 
 for all modeled longitudinal eigenvalues.
 
@@ -261,11 +261,11 @@ for all modeled longitudinal eigenvalues.
 
 The selected controller shall satisfy
 
-$$
+```math
 \zeta_{SP,CL}
 >
 \zeta_{SP,OL}.
-$$
+```
 
 **Verification:** Modal comparison.
 
@@ -273,11 +273,11 @@ $$
 
 If a quantitative target is established, the selected controller shall satisfy
 
-$$
+```math
 \zeta_{SP,CL}
 \geq
 \zeta_{SP,\mathrm{target}}.
-$$
+```
 
 The value
 
@@ -301,13 +301,13 @@ The selected controller shall not make the modeled phugoid or another modeled lo
 
 The controller implementation shall limit the total equivalent elevator command to the baselined research-model position limits:
 
-$$
+```math
 \delta_{e,\min}
 \leq
 \delta_{e,\mathrm{total}}
 \leq
 \delta_{e,\max}.
-$$
+```
 
 Numerical limits remain `TBD` until a defensible value or explicit research assumption is baselined.
 
@@ -317,9 +317,9 @@ Numerical limits remain `TBD` until a defensible value or explicit research assu
 
 For a calculated command above $\delta_{e,\max}$, the output shall be limited to
 
-$$
+```math
 \delta_{e,\max}.
-$$
+```
 
 **Verification:** Unit test.
 
@@ -327,9 +327,9 @@ $$
 
 For a calculated command below $\delta_{e,\min}$, the output shall be limited to
 
-$$
+```math
 \delta_{e,\min}.
-$$
+```
 
 **Verification:** Unit test.
 
@@ -337,13 +337,13 @@ $$
 
 For
 
-$$
+```math
 \delta_{e,\min}
 <
 \delta_{e,\mathrm{cmd}}
 <
 \delta_{e,\max},
-$$
+```
 
 the position limiter shall not modify the command.
 
@@ -355,11 +355,11 @@ Before final controller verification, a decision shall be made whether elevator-
 
 If included, the model shall satisfy
 
-$$
+```math
 |\dot{\delta}_e|
 \leq
 \dot{\delta}_{e,\max}.
-$$
+```
 
 The value remains:
 
@@ -393,12 +393,12 @@ The controller verification shall compare open-loop and closed-loop responses us
 
 Closed-loop verification shall record:
 
-$$
+```math
 \Delta u(t),\quad
 \Delta w(t),\quad
 \Delta q(t),\quad
 \Delta\theta(t),
-$$
+```
 
 and the elevator-control history.
 
@@ -418,12 +418,12 @@ The selected controller shall be evaluated for at least one off-nominal paramete
 
 Candidate variables include:
 
-$$
+```math
 m,\quad
 I_y,\quad
 C_{m_\alpha},\quad
 C_{m_q}.
-$$
+```
 
 **Verification:** Sensitivity analysis.
 
@@ -475,9 +475,9 @@ CONTROLLER_COMPARISON_TOLERANCE = TBD
 
 The controller shall be tested at
 
-$$
+```math
 \Delta q=0.
-$$
+```
 
 **Expected functional result:** zero unsaturated damping correction.
 
@@ -590,7 +590,7 @@ These functions are outside the current research-controller boundary.
 
 The controller shall be treated as verified only when the evidence demonstrates:
 
-$$
+```math
 \text{Feedback Direction}
 \rightarrow
 \text{Gain Selection}
@@ -602,6 +602,6 @@ $$
 \text{Constraint Handling}
 \rightarrow
 \text{Implementation Agreement}.
-$$
+```
 
 A visually smooth response alone is not sufficient evidence of successful control-law design.

@@ -6,7 +6,7 @@ This repository documents the development of an **Airbus A320-200-inspired longi
 
 The project is structured to demonstrate the complete engineering chain around a control implementation:
 
-$$
+```math
 \text{Requirements}
 \rightarrow
 \text{Aircraft Data}
@@ -18,7 +18,7 @@ $$
 \text{Verification}
 \rightarrow
 \text{Traceability}
-$$
+```
 
 The objective is not simply to produce a working MATLAB or Simulink model. The objective is to demonstrate how flight-control software and analysis are supported by controlled assumptions, source data, mathematical derivation, configuration discipline, verification evidence, and documented limitations.
 
@@ -41,7 +41,7 @@ The project develops a longitudinal A320-200 research model suitable for:
 
 The initial longitudinal state vector is
 
-$$
+```math
 x_L
 =
 \begin{bmatrix}
@@ -50,23 +50,23 @@ x_L
 \Delta q \\
 \Delta\theta
 \end{bmatrix},
-$$
+```
 
 with equivalent elevator perturbation input
 
-$$
+```math
 \Delta\delta_e.
-$$
+```
 
 The target linear model is
 
-$$
+```math
 \Delta\dot{x}_L
 =
 A_L\Delta x_L
 +
 B_L\Delta\delta_e.
-$$
+```
 
 ---
 
@@ -149,65 +149,65 @@ The nonlinear longitudinal rigid-body research equations are derived from Newton
 
 The current longitudinal form is:
 
-$$
+```math
 \dot{u}
 =
 \frac{X_A+X_T}{m}
 -g\sin\theta
 -qw,
-$$
+```
 
-$$
+```math
 \dot{w}
 =
 \frac{Z_A+Z_T}{m}
 +g\cos\theta
 +qu,
-$$
+```
 
-$$
+```math
 \dot{q}
 =
 \frac{M_A+M_T}{I_y},
-$$
+```
 
-$$
+```math
 \dot{\theta}
 =
 q.
-$$
+```
 
 Aerodynamic loads are generated from coefficient models such as
 
-$$
+```math
 L
 =
 \bar{q}SC_L,
-$$
+```
 
-$$
+```math
 D
 =
 \bar{q}SC_D,
-$$
+```
 
-$$
+```math
 M_A
 =
 \bar{q}S\bar{c}C_m,
-$$
+```
 
 where dynamic pressure is
 
-$$
+```math
 \bar{q}
 =
 \frac{1}{2}\rho V^2.
-$$
+```
 
 A candidate research lift model is
 
-$$
+```math
 C_L
 =
 C_{L_0}
@@ -217,11 +217,11 @@ C_{L_\alpha}\alpha
 C_{L_q}\frac{q\bar{c}}{2V}
 +
 C_{L_{\delta_e}}\delta_e,
-$$
+```
 
 and the corresponding pitching-moment model is
 
-$$
+```math
 C_m
 =
 C_{m_0}
@@ -231,7 +231,7 @@ C_{m_\alpha}\alpha
 C_{m_q}\frac{q\bar{c}}{2V}
 +
 C_{m_{\delta_e}}\delta_e.
-$$
+```
 
 All coefficient normalizations and sign conventions must be reviewed before the research coefficient set is promoted from `PROPOSED` to `BASELINED`.
 
@@ -241,49 +241,49 @@ All coefficient normalizations and sign conventions must be reviewed before the 
 
 The nonlinear model is represented abstractly as
 
-$$
+```math
 \dot{x}
 =
 f(x,u).
-$$
+```
 
 A nominal trim point satisfies the defined steady-flight conditions, including
 
-$$
+```math
 \dot{u}_0
 \approx
 0,
-$$
+```
 
-$$
+```math
 \dot{w}_0
 \approx
 0,
-$$
+```
 
-$$
+```math
 \dot{q}_0
 \approx
 0.
-$$
+```
 
 The linearized model is obtained around the operating point:
 
-$$
+```math
 A_L
 =
 \left.
 \frac{\partial f_L}{\partial x_L}
 \right|_{x_0,u_0},
-$$
+```
 
-$$
+```math
 B_L
 =
 \left.
 \frac{\partial f_L}{\partial \delta_e}
 \right|_{x_0,u_0}.
-$$
+```
 
 The resulting matrices are not treated as universal A320 matrices. Every reported $A_L$ and $B_L$ pair must identify the operating condition and parameter baseline from which it was generated.
 
@@ -293,37 +293,37 @@ The resulting matrices are not treated as universal A320 matrices. Every reporte
 
 Open-loop stability is evaluated from
 
-$$
+```math
 \lambda_i
 =
 \operatorname{eig}(A_L).
-$$
+```
 
 For a complex-conjugate mode
 
-$$
+```math
 \lambda
 =
 \sigma
 \pm
 j\omega_d,
-$$
+```
 
 the natural frequency is
 
-$$
+```math
 \omega_n
 =
 \sqrt{\sigma^2+\omega_d^2},
-$$
+```
 
 and the damping ratio is
 
-$$
+```math
 \zeta
 =
 -\frac{\sigma}{\omega_n}.
-$$
+```
 
 The project identifies the:
 
@@ -342,31 +342,31 @@ The initial research controller is a pitch-rate damper.
 
 The baseline signed-gain form is
 
-$$
+```math
 \Delta\delta_{e,\mathrm{damp}}
 =
 K_q\Delta q.
-$$
+```
 
 For
 
-$$
+```math
 C_q
 =
 \begin{bmatrix}
 0 & 0 & 1 & 0
 \end{bmatrix},
-$$
+```
 
 the closed-loop state matrix is
 
-$$
+```math
 A_{CL}
 =
 A_L
 +
 B_LK_qC_q.
-$$
+```
 
 The sign and magnitude of $K_q$ are not assumed in advance.
 
@@ -405,7 +405,7 @@ CTL-xxx
 
 The intended traceability chain is:
 
-$$
+```math
 \text{Requirement}
 \rightarrow
 \text{Design}
@@ -415,7 +415,7 @@ $$
 \text{Verification Case}
 \rightarrow
 \text{Result}.
-$$
+```
 
 A result is not considered verified simply because a simulation executes or a plot appears reasonable.
 

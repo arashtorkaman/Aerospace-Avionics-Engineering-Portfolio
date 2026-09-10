@@ -58,12 +58,12 @@ The model is intended to support:
 
 The initial small-disturbance longitudinal state vector is
 
-$$
+```math
 x =
 \begin{bmatrix}
 u & w & q & \theta
 \end{bmatrix}^{T},
-$$
+```
 
 where:
 
@@ -74,17 +74,17 @@ where:
 
 The initial control input is an equivalent elevator command:
 
-$$
+```math
 u_c = \delta_e.
-$$
+```
 
 The exact sign convention for $\delta_e$ is defined in `coordinate_systems.md`.
 
 The linearized aircraft will be represented as
 
-$$
+```math
 \dot{x} = A x + B \delta_e.
-$$
+```
 
 The numerical $A$ and $B$ matrices shall not be frozen until the nominal flight condition, mass properties, aerodynamic derivative set, and sign conventions have been established.
 
@@ -126,17 +126,17 @@ Only $b$ and general external dimensions are frozen from the Airbus source at th
 
 The model requires, at minimum:
 
-$$
+```math
 m,\qquad I_y
-$$
+```
 
 for the first longitudinal analysis.
 
 A complete six-degree-of-freedom extension would additionally require
 
-$$
+```math
 I_x,\qquad I_z,\qquad I_{xz}.
-$$
+```
 
 Airbus public airport-planning documentation does not provide the complete inertia tensor needed for this research model. Any inertia values used later shall therefore be identified as `LITERATURE`, `DERIVED`, or `ASSUMED`, never `OEM-PUBLIC` unless an Airbus source explicitly supports them.
 
@@ -154,14 +154,14 @@ The first longitudinal model is expected to require a subset of coefficients or 
 
 Representative coefficient notation may include:
 
-$$
+```math
 C_{L_\alpha},\quad
 C_{L_q},\quad
 C_{L_{\delta_e}},\quad
 C_{m_\alpha},\quad
 C_{m_q},\quad
 C_{m_{\delta_e}}.
-$$
+```
 
 No numerical value shall enter the executable model until its source and applicability have been reviewed.
 

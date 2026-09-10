@@ -49,7 +49,7 @@ The following documents define constraints on these requirements:
 
 The engineering workflow is:
 
-$$
+```math
 \text{Source Data}
 \rightarrow
 \text{Aircraft Definition}
@@ -63,11 +63,11 @@ $$
 \text{Pitch Control}
 \rightarrow
 \text{Verification}.
-$$
+```
 
 The modeled longitudinal system uses the perturbation state vector
 
-$$
+```math
 x_L
 =
 \begin{bmatrix}
@@ -76,13 +76,13 @@ x_L
 \Delta q \\
 \Delta\theta
 \end{bmatrix},
-$$
+```
 
 with equivalent elevator perturbation input
 
-$$
+```math
 \Delta\delta_e.
-$$
+```
 
 ## 5. Aircraft and Configuration Requirements
 
@@ -133,12 +133,12 @@ The system shall represent the longitudinal rigid-body response of the A320-200 
 
 The initial system shall represent, at minimum:
 
-$$
+```math
 \Delta u,\qquad
 \Delta w,\qquad
 \Delta q,\qquad
 \Delta\theta.
-$$
+```
 
 **Verification:** Model inspection.
 
@@ -168,13 +168,13 @@ The system shall define one nominal longitudinal operating point before lineariz
 
 The operating point shall identify at minimum:
 
-$$
+```math
 h_0,\quad
 V_0,\quad
 M_0,\quad
 m_0,\quad
 x_{CG,0},
-$$
+```
 
 where applicable to the selected dataset.
 
@@ -186,12 +186,12 @@ The system shall determine or import a dynamically consistent trim condition for
 
 The trim condition shall define, as applicable:
 
-$$
+```math
 \alpha_0,\quad
 \theta_0,\quad
 \delta_{e0},\quad
 T_0.
-$$
+```
 
 **Verification:** Trim analysis.
 
@@ -223,13 +223,13 @@ The system shall generate or construct a longitudinal linear model about the nom
 
 The model shall have the form
 
-$$
+```math
 \Delta\dot{x}_L
 =
 A_L\Delta x_L
 +
 B_L\Delta\delta_e.
-$$
+```
 
 **Verification:** Model inspection and numerical test.
 
@@ -237,11 +237,11 @@ $$
 
 For the baseline four-state, single-input model:
 
-$$
+```math
 A_L \in \mathbb{R}^{4\times4},
 \qquad
 B_L \in \mathbb{R}^{4\times1}.
-$$
+```
 
 **Verification:** Automated dimension test.
 
@@ -263,9 +263,9 @@ The system shall reproduce the same nominal $A_L$ and $B_L$ matrices within a ba
 
 The system shall calculate the eigenvalues of the nominal longitudinal state matrix:
 
-$$
+```math
 \lambda_i = \operatorname{eig}(A_L).
-$$
+```
 
 **Verification:** Independent numerical comparison.
 
@@ -298,21 +298,21 @@ For every oscillatory complex-conjugate longitudinal mode, the system shall calc
 
 For
 
-$$
+```math
 \lambda=\sigma\pm j\omega_d,
-$$
+```
 
 the calculations shall include
 
-$$
+```math
 \omega_n=\sqrt{\sigma^2+\omega_d^2}
-$$
+```
 
 and
 
-$$
+```math
 \zeta=-\frac{\sigma}{\omega_n}.
-$$
+```
 
 **Verification:** Independent equation-based calculation.
 
@@ -355,12 +355,12 @@ The system shall simulate the response to a defined initial forward-velocity per
 
 For applicable time-domain tests, the system shall record at minimum:
 
-$$
+```math
 \Delta u(t),\quad
 \Delta w(t),\quad
 \Delta q(t),\quad
 \Delta\theta(t).
-$$
+```
 
 **Verification:** Output-data inspection.
 
@@ -386,9 +386,9 @@ The selected nominal controller configuration shall result in stable closed-loop
 
 For continuous-time analysis, nominal closed-loop stability requires
 
-$$
+```math
 \operatorname{Re}(\lambda_i)<0
-$$
+```
 
 for every closed-loop eigenvalue.
 
@@ -398,9 +398,9 @@ for every closed-loop eigenvalue.
 
 The selected controller shall produce a short-period damping ratio greater than the corresponding open-loop damping ratio:
 
-$$
+```math
 \zeta_{SP,CL}>\zeta_{SP,OL}.
-$$
+```
 
 A stronger quantitative target may be baselined later as:
 
@@ -462,12 +462,12 @@ The system shall evaluate the sensitivity of selected longitudinal stability and
 
 Candidate parameters include:
 
-$$
+```math
 m,\quad
 I_y,\quad
 C_{m_\alpha},\quad
 C_{m_q}.
-$$
+```
 
 **Verification:** Parameter-sweep analysis.
 
@@ -502,7 +502,7 @@ Every requirement intended for the current project release shall have an assigne
 
 Every verified requirement shall trace to:
 
-$$
+```math
 \text{Requirement}
 \rightarrow
 \text{Design}
@@ -512,7 +512,7 @@ $$
 \text{Verification Case}
 \rightarrow
 \text{Result}.
-$$
+```
 
 **Verification:** Requirements Traceability Matrix review.
 

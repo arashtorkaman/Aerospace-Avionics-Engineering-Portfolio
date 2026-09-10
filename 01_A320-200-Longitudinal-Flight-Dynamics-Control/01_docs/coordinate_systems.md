@@ -26,12 +26,12 @@ The axes are:
 
 The corresponding body-axis translational velocities are:
 
-$$
+```math
 \mathbf{V}_B =
 \begin{bmatrix}
 u \\ v \\ w
 \end{bmatrix}.
-$$
+```
 
 Thus:
 
@@ -43,12 +43,12 @@ Thus:
 
 The body angular-rate vector is
 
-$$
+```math
 \boldsymbol{\omega}_B =
 \begin{bmatrix}
 p \\ q \\ r
 \end{bmatrix},
-$$
+```
 
 where:
 
@@ -66,13 +66,13 @@ Using the right-hand rule:
 
 The Euler attitude angles are:
 
-$$
+```math
 \phi = \text{roll angle},
 \qquad
 \theta = \text{pitch angle},
 \qquad
 \psi = \text{yaw/heading angle}.
-$$
+```
 
 Positive directions follow the same right-hand convention as $p$, $q$, and $r$.
 
@@ -80,9 +80,9 @@ For the initial longitudinal model, the principal attitude variable is $\theta$.
 
 Under the small-angle longitudinal approximation,
 
-$$
+```math
 \dot{\theta} \approx q.
-$$
+```
 
 This approximation shall be used only where its assumptions are valid and shall not be substituted for the full nonlinear attitude kinematics in a later 6-DOF model.
 
@@ -100,23 +100,23 @@ The initial small-disturbance longitudinal stability model does not require full
 
 Total airspeed is defined as
 
-$$
+```math
 V = \sqrt{u^2+v^2+w^2}.
-$$
+```
 
 Angle of attack is defined as
 
-$$
+```math
 \alpha = \tan^{-1}\left(\frac{w}{u}\right)
-$$
+```
 
 for the longitudinal case.
 
 For small perturbations about a trim speed $U_0$,
 
-$$
+```math
 \Delta \alpha \approx \frac{\Delta w}{U_0}
-$$
+```
 
 when the neglected higher-order terms are sufficiently small.
 
@@ -126,12 +126,12 @@ Sideslip angle may later be defined using the selected 6-DOF convention; it is o
 
 Body-axis aerodynamic and propulsive forces are represented as:
 
-$$
+```math
 \mathbf{F}_B =
 \begin{bmatrix}
 X \\ Y \\ Z
 \end{bmatrix}.
-$$
+```
 
 The signs are:
 
@@ -149,12 +149,12 @@ Care must be taken when converting from wind-axis lift and drag to body-axis $X$
 
 Moments about the body axes are:
 
-$$
+```math
 \mathbf{M}_B =
 \begin{bmatrix}
 L_m \\ M \\ N
 \end{bmatrix},
-$$
+```
 
 where:
 
@@ -166,9 +166,9 @@ The symbol $L_m$ is used in documentation when necessary to distinguish rolling 
 
 For longitudinal dynamics:
 
-$$
+```math
 M>0
-$$
+```
 
 corresponds to a nose-up pitching moment.
 
@@ -176,9 +176,9 @@ corresponds to a nose-up pitching moment.
 
 For this research model:
 
-$$
+```math
 \delta_e > 0
-$$
+```
 
 is defined as **elevator trailing-edge down**.
 
@@ -196,15 +196,15 @@ The longitudinal linear model uses perturbations around a trim state.
 
 For any state $x$,
 
-$$
+```math
 x = x_0 + \Delta x.
-$$
+```
 
 The linear-model state symbols $u$, $w$, $q$, and $\theta$ may be used as perturbation variables when the context is unambiguous.
 
 Formally:
 
-$$
+```math
 x_L =
 \begin{bmatrix}
 \Delta u \\
@@ -212,25 +212,25 @@ x_L =
 \Delta q \\
 \Delta \theta
 \end{bmatrix}.
-$$
+```
 
 The input is:
 
-$$
+```math
 \Delta\delta_e = \delta_e - \delta_{e0}.
-$$
+```
 
 ## 11. Longitudinal State-Space Convention
 
 The model shall use
 
-$$
+```math
 \Delta\dot{x}_L
 =
 A_L\Delta x_L
 +
 B_L\Delta\delta_e.
-$$
+```
 
 Rows of $A_L$ correspond to:
 

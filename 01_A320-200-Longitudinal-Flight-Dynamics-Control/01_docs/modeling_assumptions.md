@@ -54,17 +54,17 @@ The nominal trim case is expected to represent steady, symmetric flight.
 
 The initial target conditions are:
 
-$$
+```math
 \dot{u}_0 = 0,\qquad
 \dot{w}_0 = 0,\qquad
 \dot{q}_0 = 0.
-$$
+```
 
 For steady non-turning flight:
 
-$$
+```math
 q_0 = 0.
-$$
+```
 
 The exact flight-path angle may be zero for level-flight work or nonzero if a later approach-condition dataset is selected. The chosen condition shall be documented before trim is solved.
 
@@ -74,21 +74,21 @@ Trim residuals shall be reported numerically rather than described only as "conv
 
 The nonlinear dynamics are conceptually written as
 
-$$
+```math
 \dot{x}=f(x,u).
-$$
+```
 
 Around the equilibrium point $(x_0,u_0)$,
 
-$$
+```math
 \Delta\dot{x}
 \approx
 A\Delta x+B\Delta u,
-$$
+```
 
 with
 
-$$
+```math
 A=
 \left.
 \frac{\partial f}{\partial x}
@@ -98,7 +98,7 @@ B=
 \left.
 \frac{\partial f}{\partial u}
 \right|_{x_0,u_0}.
-$$
+```
 
 The approximation neglects higher-order perturbation terms. Therefore, validation shall include a stated perturbation range within which the linear model remains acceptably close to the nonlinear/reference implementation.
 
@@ -106,7 +106,7 @@ The approximation neglects higher-order perturbation terms. Therefore, validatio
 
 The initial aerodynamic representation may use locally linear coefficient expansions such as
 
-$$
+```math
 C_L =
 C_{L_0}
 +
@@ -115,11 +115,11 @@ C_{L_\alpha}\alpha
 C_{L_q}\frac{q\bar c}{2V}
 +
 C_{L_{\delta_e}}\delta_e
-$$
+```
 
 and
 
-$$
+```math
 C_m =
 C_{m_0}
 +
@@ -128,7 +128,7 @@ C_{m_\alpha}\alpha
 C_{m_q}\frac{q\bar c}{2V}
 +
 C_{m_{\delta_e}}\delta_e.
-$$
+```
 
 Additional terms such as $C_{L_{\dot\alpha}}$ or $C_{m_{\dot\alpha}}$ may be introduced if supported by the selected literature model.
 
@@ -169,9 +169,9 @@ Atmospheric density, pressure, speed of sound, and temperature shall be obtained
 
 Dynamic pressure is
 
-$$
+```math
 \bar q = \frac{1}{2}\rho V^2.
-$$
+```
 
 A consistent atmosphere state shall be used for both trim and derivative conversion.
 

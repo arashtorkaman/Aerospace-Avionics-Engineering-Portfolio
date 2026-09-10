@@ -44,51 +44,51 @@ This design primarily supports:
 
 The baseline longitudinal aerodynamic model accepts:
 
-$$
+```math
 V,\quad
 \alpha,\quad
 q,\quad
 \delta_e,\quad
 \rho
-$$
+```
 
 and the controlled aircraft parameters:
 
-$$
+```math
 S,\quad
 \bar{c}.
-$$
+```
 
 Where required, additional terms may include:
 
-$$
+```math
 \dot{\alpha}.
-$$
+```
 
 ### 3.2 Outputs
 
 The model shall provide at minimum:
 
-$$
+```math
 C_L,\quad
 C_D,\quad
 C_m,
-$$
+```
 
 followed by aerodynamic loads:
 
-$$
+```math
 L,\quad
 D,\quad
 M.
-$$
+```
 
 If the equations of motion are implemented in body axes, the model shall additionally provide:
 
-$$
+```math
 X_A,\quad
 Z_A,
-$$
+```
 
 where the subscript $A$ denotes aerodynamic force.
 
@@ -104,14 +104,14 @@ The current research coefficient set is marked `PROPOSED`, not `BASELINED`.
 
 The current candidate dataset contains, among other quantities:
 
-$$
+```math
 C_{L_\alpha},\quad
 C_{m_\alpha},\quad
 C_{L_q},\quad
 C_{m_q},\quad
 C_{L_{\delta_e}},\quad
 C_{m_{\delta_e}},
-$$
+```
 
 plus candidate $\dot{\alpha}$ derivatives.
 
@@ -134,39 +134,39 @@ The literature source convention for elevator deflection must be reconciled befo
 
 For the longitudinal case with negligible sideslip:
 
-$$
+```math
 V
 =
 \sqrt{u^2+w^2}.
-$$
+```
 
 Angle of attack is defined as
 
-$$
+```math
 \alpha
 =
 \tan^{-1}\left(\frac{w}{u}\right).
-$$
+```
 
 For small perturbations about a trim condition:
 
-$$
+```math
 u = U_0 + \Delta u
-$$
+```
 
 and
 
-$$
+```math
 w = W_0 + \Delta w.
-$$
+```
 
 If the trim condition has small $W_0$ and the perturbations remain small, then:
 
-$$
+```math
 \Delta\alpha
 \approx
 \frac{\Delta w}{U_0}.
-$$
+```
 
 This approximation shall be used only in the linear model, not as a replacement for the nonlinear angle calculation when the nonlinear reference model is available.
 
@@ -174,11 +174,11 @@ This approximation shall be used only in the linear model, not as a replacement 
 
 Dynamic pressure is defined as
 
-$$
+```math
 \bar{q}
 =
 \frac{1}{2}\rho V^2.
-$$
+```
 
 The same atmospheric state shall be used consistently by trim, aerodynamic-force calculation, and dimensional-derivative conversion.
 
@@ -186,7 +186,7 @@ The same atmospheric state shall be used consistently by trim, aerodynamic-force
 
 The baseline candidate lift model is
 
-$$
+```math
 C_L
 =
 C_{L_0}
@@ -196,11 +196,11 @@ C_{L_\alpha}\alpha
 C_{L_q}\frac{q\bar{c}}{2V}
 +
 C_{L_{\delta_e}}\delta_e.
-$$
+```
 
 If the selected literature source supports an angle-of-attack-rate term, the model may be extended to
 
-$$
+```math
 C_L
 =
 C_{L_0}
@@ -213,7 +213,7 @@ C_{L_{\dot{\alpha}}}
 \frac{\dot{\alpha}\bar{c}}{2V}
 +
 C_{L_{\delta_e}}\delta_e.
-$$
+```
 
 The $\dot{\alpha}$ term shall remain disabled until its normalization is confirmed.
 
@@ -221,13 +221,13 @@ The $\dot{\alpha}$ term shall remain disabled until its normalization is confirm
 
 The initial candidate drag model is a parabolic drag polar:
 
-$$
+```math
 C_D
 =
 C_{D_0}
 +
 K C_L^2.
-$$
+```
 
 This representation is adequate for the initial research trim and longitudinal analysis only if its source applicability is confirmed.
 
@@ -246,7 +246,7 @@ If the chosen nominal operating point makes any omitted effect material, the mod
 
 The baseline candidate pitching-moment model is
 
-$$
+```math
 C_m
 =
 C_{m_0}
@@ -256,11 +256,11 @@ C_{m_\alpha}\alpha
 C_{m_q}\frac{q\bar{c}}{2V}
 +
 C_{m_{\delta_e}}\delta_e.
-$$
+```
 
 If justified by the selected literature model, an angle-of-attack-rate term may be added:
 
-$$
+```math
 C_m
 =
 C_{m_0}
@@ -273,33 +273,33 @@ C_{m_{\dot{\alpha}}}
 \frac{\dot{\alpha}\bar{c}}{2V}
 +
 C_{m_{\delta_e}}\delta_e.
-$$
+```
 
 ## 11. Aerodynamic Loads
 
 Lift is
 
-$$
+```math
 L
 =
 \bar{q}SC_L.
-$$
+```
 
 Drag is
 
-$$
+```math
 D
 =
 \bar{q}SC_D.
-$$
+```
 
 Pitching moment about the adopted reference point is
 
-$$
+```math
 M_A
 =
 \bar{q}S\bar{c}C_m.
-$$
+```
 
 The moment reference and center-of-gravity relationship must be documented before final trim analysis.
 
@@ -309,41 +309,41 @@ For zero sideslip and the body-axis convention used by the project, aerodynamic 
 
 A candidate transformation is
 
-$$
+```math
 X_A
 =
 -D\cos\alpha
 +
 L\sin\alpha,
-$$
+```
 
-$$
+```math
 Z_A
 =
 -D\sin\alpha
 -
 L\cos\alpha.
-$$
+```
 
 This transformation shall be verified using limiting cases.
 
 At
 
-$$
+```math
 \alpha=0,
-$$
+```
 
 the equations reduce to
 
-$$
+```math
 X_A=-D
-$$
+```
 
 and
 
-$$
+```math
 Z_A=-L.
-$$
+```
 
 Because $+Z_B$ is downward and lift acts upward, the sign of $Z_A$ is therefore negative in positive-lift level flight.
 
@@ -353,25 +353,25 @@ The initial aerodynamic model does not include detailed engine dynamics.
 
 Where trim requires propulsion, the total body-axis force may be represented as
 
-$$
+```math
 X
 =
 X_A+X_T,
-$$
+```
 
-$$
+```math
 Z
 =
 Z_A+Z_T,
-$$
+```
 
 and pitching moment as
 
-$$
+```math
 M
 =
 M_A+M_T.
-$$
+```
 
 For the first longitudinal baseline, thrust may be treated as an equivalent trim variable if the thrust-line geometry is not required by the selected model.
 
@@ -385,7 +385,7 @@ Aerodynamic loads are generated by the aerodynamic model. Gravity is introduced 
 
 This separation is required so that:
 
-$$
+```math
 \text{Aerodynamics}
 +
 \text{Propulsion}
@@ -393,34 +393,34 @@ $$
 \text{Gravity}
 =
 \text{Rigid-Body Dynamics}.
-$$
+```
 
 ## 15. Trim Use
 
 At steady trim:
 
-$$
+```math
 q_0=0,
-$$
+```
 
 and, for steady level flight,
 
-$$
+```math
 \dot{u}_0=0,
 \qquad
 \dot{w}_0=0,
 \qquad
 \dot{q}_0=0.
-$$
+```
 
 The trim solver will determine values such as
 
-$$
+```math
 \alpha_0,\quad
 \theta_0,\quad
 \delta_{e0},\quad
 T_0
-$$
+```
 
 subject to the selected operating condition.
 
@@ -430,7 +430,7 @@ The aerodynamic model shall not hard-code these values.
 
 For a generic aerodynamic quantity $C$,
 
-$$
+```math
 C
 =
 C_0
@@ -442,30 +442,30 @@ C_0
 \frac{\partial C}{\partial \delta_e}\Delta\delta_e
 +
 \cdots.
-$$
+```
 
 The coefficient derivatives are local sensitivities.
 
 For example:
 
-$$
+```math
 C_{m_\alpha}
 =
 \frac{\partial C_m}{\partial\alpha},
-$$
+```
 
-$$
+```math
 C_{m_q}
 =
 \frac{\partial C_m}
 {\partial\left(q\bar{c}/2V\right)},
-$$
+```
 
-$$
+```math
 C_{m_{\delta_e}}
 =
 \frac{\partial C_m}{\partial\delta_e}.
-$$
+```
 
 This distinction is important when converting nondimensional derivatives into dimensional state-space coefficients.
 
@@ -475,7 +475,7 @@ The aerodynamic coefficients are not inserted directly into $A_L$ and $B_L$ with
 
 The derivation path is:
 
-$$
+```math
 C_L,\ C_D,\ C_m
 \rightarrow
 L,\ D,\ M
@@ -485,16 +485,16 @@ X,\ Z,\ M
 X_u,\ X_w,\ Z_u,\ Z_w,\ M_u,\ M_w,\ M_q,\ldots
 \rightarrow
 A_L,\ B_L.
-$$
+```
 
 For example, a pitching-moment derivative with respect to angle of attack can be related to the coefficient derivative by a form such as
 
-$$
+```math
 M_\alpha
 =
 \frac{\bar{q}S\bar{c}}{I_y}
 C_{m_\alpha}
-$$
+```
 
 when $M_\alpha$ is defined as an angular-acceleration derivative.
 
@@ -506,9 +506,9 @@ Under common conventions, a statically stable longitudinal research model is exp
 
 This corresponds conceptually to
 
-$$
+```math
 C_{m_\alpha}<0.
-$$
+```
 
 This sign check is necessary but not sufficient to validate the complete aircraft model.
 
@@ -518,9 +518,9 @@ Under common normalization and signs, pitch-rate damping is expected to provide 
 
 A candidate literature value with
 
-$$
+```math
 C_{m_q}<0
-$$
+```
 
 is therefore qualitatively consistent with damping under the project body-axis moment convention.
 
@@ -530,17 +530,17 @@ The exact source normalization shall still be verified before the coefficient is
 
 The project defines
 
-$$
+```math
 \delta_e>0
-$$
+```
 
 as trailing-edge down.
 
 The sign of
 
-$$
+```math
 C_{m_{\delta_e}}
-$$
+```
 
 shall be checked against the literature source convention before use.
 
@@ -616,11 +616,11 @@ The future verification plan shall include at minimum:
 
 Verify
 
-$$
+```math
 \bar{q}
 =
 \frac{1}{2}\rho V^2
-$$
+```
 
 against an independent calculation.
 
@@ -628,17 +628,17 @@ against an independent calculation.
 
 For
 
-$$
+```math
 \alpha=0,
-$$
+```
 
 verify
 
-$$
+```math
 X_A=-D,
 \qquad
 Z_A=-L.
-$$
+```
 
 ### AERO-TC-003 — Positive angle-of-attack sensitivity
 

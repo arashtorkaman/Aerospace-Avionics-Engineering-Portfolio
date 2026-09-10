@@ -53,15 +53,15 @@ The initial state-space model is valid only in a neighborhood of its nominal tri
 
 Conceptually,
 
-$$
+```math
 \Delta\dot{x}=A\Delta x+B\Delta u
-$$
+```
 
 is a first-order approximation to
 
-$$
+```math
 \dot{x}=f(x,u).
-$$
+```
 
 The approximation error generally increases as:
 

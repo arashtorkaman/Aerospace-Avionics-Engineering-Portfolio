@@ -58,9 +58,9 @@ A value calculated by this project from one or more registered inputs.
 
 Examples:
 
-$$
+```math
 \bar q = \frac{1}{2}\rho V^2
-$$
+```
 
 or a dimensional derivative computed from a nondimensional aerodynamic coefficient.
 
@@ -193,11 +193,11 @@ If a source provides another unit system:
 
 Example:
 
-$$
+```math
 m_{\mathrm{kg}}
 =
 m_{\mathrm{lbm}}\times 0.45359237.
-$$
+```
 
 Angles used by computational equations shall be converted to radians.
 
@@ -207,9 +207,9 @@ Aerodynamic derivative signs are meaningful only with their source convention.
 
 Before importing a derivative such as
 
-$$
+```math
 C_{m_{\delta_e}},
-$$
+```
 
 the following shall be identified:
 

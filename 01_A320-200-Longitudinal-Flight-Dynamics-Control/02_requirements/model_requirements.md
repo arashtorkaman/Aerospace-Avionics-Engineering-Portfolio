@@ -35,7 +35,7 @@ The initial mathematical scope is a four-state longitudinal small-disturbance mo
 
 The state vector shall be
 
-$$
+```math
 x_L
 =
 \begin{bmatrix}
@@ -44,13 +44,13 @@ x_L
 \Delta q \\
 \Delta\theta
 \end{bmatrix}.
-$$
+```
 
 The primary input shall be
 
-$$
+```math
 u_L=\Delta\delta_e.
-$$
+```
 
 ## 4. State and Interface Requirements
 
@@ -58,21 +58,21 @@ $$
 
 The model shall use the state ordering:
 
-$$
+```math
 x_L(1)=\Delta u,
-$$
+```
 
-$$
+```math
 x_L(2)=\Delta w,
-$$
+```
 
-$$
+```math
 x_L(3)=\Delta q,
-$$
+```
 
-$$
+```math
 x_L(4)=\Delta\theta.
-$$
+```
 
 **Verification:** Interface inspection and automated state-index test.
 
@@ -91,11 +91,11 @@ The model shall use:
 
 The longitudinal control input shall be elevator perturbation:
 
-$$
+```math
 \Delta\delta_e
 =
 \delta_e-\delta_{e0}
-$$
+```
 
 in radians.
 
@@ -155,12 +155,12 @@ The model shall calculate or import an atmospheric state consistent with the nom
 
 The atmospheric state shall include, as required:
 
-$$
+```math
 \rho,\quad
 T,\quad
 p,\quad
 a.
-$$
+```
 
 **Verification:** Comparison with an ISA reference calculation.
 
@@ -168,11 +168,11 @@ $$
 
 The model shall calculate dynamic pressure as
 
-$$
+```math
 \bar{q}
 =
 \frac{1}{2}\rho V^2.
-$$
+```
 
 **Verification:** Independent numerical calculation.
 
@@ -190,7 +190,7 @@ The longitudinal aerodynamic model shall represent sufficient aerodynamic coeffi
 
 A candidate lift representation is
 
-$$
+```math
 C_L
 =
 C_{L_0}
@@ -200,7 +200,7 @@ C_{L_\alpha}\alpha
 C_{L_q}\frac{q\bar{c}}{2V}
 +
 C_{L_{\delta_e}}\delta_e
-$$
+```
 
 with additional terms included only when supported by the selected model source.
 
@@ -212,7 +212,7 @@ The model shall represent pitching-moment coefficient dependence sufficient to s
 
 A candidate representation is
 
-$$
+```math
 C_m
 =
 C_{m_0}
@@ -222,7 +222,7 @@ C_{m_\alpha}\alpha
 C_{m_q}\frac{q\bar{c}}{2V}
 +
 C_{m_{\delta_e}}\delta_e.
-$$
+```
 
 **Verification:** Equation/design inspection.
 
@@ -230,11 +230,11 @@ $$
 
 Terms involving $\dot{\alpha}$, including
 
-$$
+```math
 C_{L_{\dot{\alpha}}}
 \qquad\text{or}\qquad
 C_{m_{\dot{\alpha}}},
-$$
+```
 
 shall be included only if their source definition and implementation convention are understood and documented.
 
@@ -244,9 +244,9 @@ shall be included only if their source definition and implementation convention 
 
 Where coefficient-based forces are used, lift shall be calculated using
 
-$$
+```math
 L=\bar{q}SC_L.
-$$
+```
 
 **Verification:** Independent calculation.
 
@@ -254,9 +254,9 @@ $$
 
 Where coefficient-based moments are used, pitching moment shall be calculated using
 
-$$
+```math
 M=\bar{q}S\bar{c}C_m.
-$$
+```
 
 **Verification:** Independent calculation.
 
@@ -274,13 +274,13 @@ The trim model shall solve or verify an equilibrium condition consistent with th
 
 For steady longitudinal flight, the required equilibrium shall include:
 
-$$
+```math
 \dot{u}_0 \approx 0,
 \qquad
 \dot{w}_0 \approx 0,
 \qquad
 \dot{q}_0 \approx 0.
-$$
+```
 
 **Verification:** Trim residual test.
 
@@ -288,12 +288,12 @@ $$
 
 The trim solution shall report, as applicable:
 
-$$
+```math
 \alpha_0,\quad
 \theta_0,\quad
 \delta_{e0},\quad
 T_0.
-$$
+```
 
 **Verification:** Output inspection.
 
@@ -301,11 +301,11 @@ $$
 
 The model shall calculate an explicit trim residual vector:
 
-$$
+```math
 r_{\mathrm{trim}}
 =
 f(x_0,u_0).
-$$
+```
 
 **Verification:** Automated calculation.
 
@@ -329,9 +329,9 @@ If the trim solution does not satisfy the baselined residual criterion, the mode
 
 Where numerical linearization is used, the nonlinear model shall be expressible as
 
-$$
+```math
 \dot{x}=f(x,u).
-$$
+```
 
 **Verification:** Design inspection.
 
@@ -339,11 +339,11 @@ $$
 
 Linearization shall be performed about
 
-$$
+```math
 x=x_0+\Delta x,
 \qquad
 u=u_0+\Delta u.
-$$
+```
 
 **Verification:** Analysis inspection.
 
@@ -351,13 +351,13 @@ $$
 
 The longitudinal state matrix shall correspond to
 
-$$
+```math
 A_L
 =
 \left.
 \frac{\partial f_L}{\partial x_L}
 \right|_{x_0,u_0}
-$$
+```
 
 or to an analytically equivalent derivation from dimensional stability derivatives.
 
@@ -367,13 +367,13 @@ or to an analytically equivalent derivation from dimensional stability derivativ
 
 The longitudinal input matrix shall correspond to
 
-$$
+```math
 B_L
 =
 \left.
 \frac{\partial f_L}{\partial \delta_e}
 \right|_{x_0,u_0}
-$$
+```
 
 or to an analytically equivalent derivation from control derivatives.
 
@@ -383,15 +383,15 @@ or to an analytically equivalent derivation from control derivatives.
 
 The baseline model shall produce
 
-$$
+```math
 A_L\in\mathbb{R}^{4\times4}
-$$
+```
 
 and
 
-$$
+```math
 B_L\in\mathbb{R}^{4\times1}.
-$$
+```
 
 **Verification:** Automated dimension test.
 
@@ -399,9 +399,9 @@ $$
 
 For the small-disturbance longitudinal model, the pitch-attitude row shall implement the selected linearized kinematic relationship consistent with
 
-$$
+```math
 \Delta\dot{\theta}\approx\Delta q
-$$
+```
 
 for the baseline approximation.
 
@@ -431,13 +431,13 @@ The linearized model shall be compared against its nonlinear or source-reference
 
 For a selected comparison trajectory, model error shall be calculated as
 
-$$
+```math
 e_x(t)
 =
 x_{\mathrm{reference}}(t)
 -
 x_{\mathrm{linear}}(t).
-$$
+```
 
 **Verification:** Automated comparison.
 
@@ -463,9 +463,9 @@ LINEARIZATION_COMPARISON_TOLERANCE = TBD
 
 The model shall calculate all eigenvalues of $A_L$:
 
-$$
+```math
 \lambda_i=\operatorname{eig}(A_L).
-$$
+```
 
 **Verification:** Independent solver comparison.
 
@@ -479,17 +479,17 @@ The model shall calculate eigenvectors or equivalent state-participation informa
 
 For each complex mode
 
-$$
+```math
 \lambda=\sigma\pm j\omega_d,
-$$
+```
 
 the model shall calculate
 
-$$
+```math
 \omega_n
 =
 \sqrt{\sigma^2+\omega_d^2}.
-$$
+```
 
 **Verification:** Independent calculation.
 
@@ -497,11 +497,11 @@ $$
 
 For each complex mode, the model shall calculate
 
-$$
+```math
 \zeta
 =
 -\frac{\sigma}{\omega_n}.
-$$
+```
 
 **Verification:** Independent calculation.
 
@@ -509,9 +509,9 @@ $$
 
 The model shall report
 
-$$
+```math
 \omega_d=|\operatorname{Im}(\lambda)|.
-$$
+```
 
 **Verification:** Independent calculation.
 
@@ -519,9 +519,9 @@ $$
 
 When $\omega_d>0$, the model shall calculate
 
-$$
+```math
 T=\frac{2\pi}{\omega_d}.
-$$
+```
 
 **Verification:** Independent calculation.
 
@@ -625,13 +625,13 @@ The Simulink model shall implement the same baseline longitudinal state definiti
 
 For equivalent linear plant inputs and initial conditions, MATLAB and Simulink state histories shall be compared using
 
-$$
+```math
 e_i(t)
 =
 x_{i,\mathrm{MATLAB}}(t)
 -
 x_{i,\mathrm{Simulink}}(t).
-$$
+```
 
 **Verification:** Automated comparison.
 
@@ -639,11 +639,11 @@ $$
 
 The comparison shall report
 
-$$
+```math
 e_{i,\max}
 =
 \max_t |e_i(t)|
-$$
+```
 
 for each modeled state.
 
@@ -693,7 +693,7 @@ The model is not accepted merely because a simulation executes.
 
 Acceptance requires evidence for:
 
-$$
+```math
 \text{Data}
 \rightarrow
 \text{Equations}
@@ -707,4 +707,4 @@ A_L,B_L
 \text{Time Response}
 \rightarrow
 \text{Independent Checks}.
-$$
+```
