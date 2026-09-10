@@ -191,7 +191,7 @@ The controller-design process shall calculate
 ```math
 \lambda_{CL,i}
 =
-\operatorname{eig}(A_{CL})
+\mathrm{eig}(A_{CL})
 ```
 
 for every evaluated gain candidate.
@@ -250,7 +250,7 @@ A gain shall not be baselined solely because a plotted response appears visually
 At the nominal operating point, the selected unsaturated linear controller shall produce
 
 ```math
-\operatorname{Re}(\lambda_{CL,i})<0
+\mathrm{Re}(\lambda_{CL,i})<0
 ```
 
 for all modeled longitudinal eigenvalues.

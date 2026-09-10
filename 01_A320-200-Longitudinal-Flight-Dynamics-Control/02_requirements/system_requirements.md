@@ -264,7 +264,7 @@ The system shall reproduce the same nominal $A_L$ and $B_L$ matrices within a ba
 The system shall calculate the eigenvalues of the nominal longitudinal state matrix:
 
 ```math
-\lambda_i = \operatorname{eig}(A_L).
+\lambda_i = \mathrm{eig}(A_L).
 ```
 
 **Verification:** Independent numerical comparison.
@@ -387,7 +387,7 @@ The selected nominal controller configuration shall result in stable closed-loop
 For continuous-time analysis, nominal closed-loop stability requires
 
 ```math
-\operatorname{Re}(\lambda_i)<0
+\mathrm{Re}(\lambda_i)<0
 ```
 
 for every closed-loop eigenvalue.

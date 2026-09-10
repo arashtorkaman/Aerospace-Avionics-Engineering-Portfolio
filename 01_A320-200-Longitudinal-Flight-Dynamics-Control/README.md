@@ -296,7 +296,7 @@ Open-loop stability is evaluated from
 ```math
 \lambda_i
 =
-\operatorname{eig}(A_L).
+\mathrm{eig}(A_L).
 ```
 
 For a complex-conjugate mode

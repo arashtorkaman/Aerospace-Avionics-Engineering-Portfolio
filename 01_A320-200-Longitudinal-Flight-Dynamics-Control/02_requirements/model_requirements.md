@@ -464,7 +464,7 @@ LINEARIZATION_COMPARISON_TOLERANCE = TBD
 The model shall calculate all eigenvalues of $A_L$:
 
 ```math
-\lambda_i=\operatorname{eig}(A_L).
+\lambda_i=\mathrm{eig}(A_L).
 ```
 
 **Verification:** Independent solver comparison.
@@ -510,7 +510,7 @@ For each complex mode, the model shall calculate
 The model shall report
 
 ```math
-\omega_d=|\operatorname{Im}(\lambda)|.
+\omega_d=|\mathrm{Im}(\lambda)|.
 ```
 
 **Verification:** Independent calculation.
@@ -529,9 +529,9 @@ T=\frac{2\pi}{\omega_d}.
 
 The model shall classify each continuous-time mode as:
 
-- stable when $\operatorname{Re}(\lambda)<0$;
-- neutrally stable when $\operatorname{Re}(\lambda)=0$ within numerical tolerance;
-- unstable when $\operatorname{Re}(\lambda)>0$.
+- stable when $\mathrm{Re}(\lambda)<0$;
+- neutrally stable when $\mathrm{Re}(\lambda)=0$ within numerical tolerance;
+- unstable when $\mathrm{Re}(\lambda)>0$.
 
 **Verification:** Automated classification test.
 

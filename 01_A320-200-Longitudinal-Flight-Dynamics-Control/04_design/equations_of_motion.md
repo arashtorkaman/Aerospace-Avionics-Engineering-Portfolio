@@ -1062,7 +1062,7 @@ The longitudinal modes are obtained from
 Equivalently:
 
 ```math
-\lambda_i=\operatorname{eig}(A_L).
+\lambda_i=\mathrm{eig}(A_L).
 ```
 
 For
