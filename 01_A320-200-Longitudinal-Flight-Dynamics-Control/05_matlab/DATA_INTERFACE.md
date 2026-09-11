@@ -1,11 +1,11 @@
-# `02_data` -> `05_matlab` Interface Contract
+# `03_data` -> `05_matlab` Interface Contract
 
 This file defines exactly what the MATLAB implementation expects from the Phase 1 data layer.
 
 ## Required file
 
 ```text
-02_data/phase1_longitudinal_model.mat
+03_data/phase1_longitudinal_model.mat
 ```
 
 ## Preferred variable
@@ -40,12 +40,12 @@ The Phase 1 state order is fixed as:
 
 or equivalently:
 
-$$
+```math
 x =
 \begin{bmatrix}
 u&w&q&\theta
 \end{bmatrix}^{T}.
-$$
+```
 
 The software rejects a different named order instead of silently reordering the matrix.
 
@@ -87,7 +87,7 @@ The elevator step simulator currently accepts models whose elevator unit is expl
 
 ## Example file-creation pattern
 
-Replace the placeholders below with the already-approved Phase 1 values from `02_data`.
+Replace the placeholders below with the already-approved Phase 1 values from `03_data`.
 
 ```matlab
 model = struct();
@@ -107,7 +107,7 @@ model.input_names = ["elevator"];
 model.input_units = ["rad"];  % or "deg", according to the actual model
 
 model.description = "Phase 1 linear longitudinal perturbation model";
-model.source = "See 02_data documentation";
+model.source = "See 03_data documentation";
 
 save("phase1_longitudinal_model.mat","model");
 ```

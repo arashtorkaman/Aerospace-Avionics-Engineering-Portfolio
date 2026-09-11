@@ -6,18 +6,18 @@ This folder is the MATLAB implementation layer for Phase 1 of the aerospace engi
 
 It implements the Phase 1 longitudinal state-space model that was defined earlier in the project. The required state order is
 
-$$
+```math
 x =
 \begin{bmatrix}
 u & w & q & \theta
 \end{bmatrix}^{T}
-$$
+```
 
 with the linear model
 
-$$
+```math
 \dot{x} = Ax + B\delta_e
-$$
+```
 
 where:
 
@@ -27,11 +27,11 @@ where:
 - `theta` = pitch attitude,
 - `delta_e` = elevator input.
 
-The MATLAB layer does **not** redefine the aircraft. Its job is to load the model created in `02_data`, check it, analyze it, simulate it, and produce repeatable engineering results.
+The MATLAB layer does **not** redefine the aircraft. Its job is to load the model created in `03_data`, check it, analyze it, simulate it, and produce repeatable engineering results.
 
 ---
 
-## 1. Why the MATLAB folder is separate from `02_data`
+## 1. Why the MATLAB folder is separate from `03_data`
 
 A clean engineering project should separate:
 
@@ -41,7 +41,7 @@ A clean engineering project should separate:
 4. **Implementation** — executable MATLAB code.
 5. **Verification** — evidence that the implementation satisfies the requirements.
 
-This is why the numerical matrices should remain in `02_data` and the analysis algorithms belong in `05_matlab`.
+This is why the numerical matrices should remain in `03_data` and the analysis algorithms belong in `05_matlab`.
 
 If an aircraft coefficient changes later, you should normally update the data source, not rewrite the analysis algorithms.
 
@@ -78,12 +78,12 @@ unless `10_results` already exists, in which case the configuration can be chang
 
 ---
 
-## 3. Required `02_data` file
+## 3. Required `03_data` file
 
 The main script expects:
 
 ```text
-02_data/phase1_longitudinal_model.mat
+03_data/phase1_longitudinal_model.mat
 ```
 
 The preferred contents are a MATLAB structure named `model`:
@@ -102,7 +102,7 @@ save("phase1_longitudinal_model.mat","model");
 The code also accepts raw variables `A`, `B`, `state_names`,
 `state_units`, `input_names`, and `input_units` in the MAT-file.
 
-Do not copy arbitrary example aircraft matrices into the portfolio merely to make the script run. Use the approved Phase 1 values from `02_data`.
+Do not copy arbitrary example aircraft matrices into the portfolio merely to make the script run. Use the approved Phase 1 values from `03_data`.
 
 ---
 
@@ -117,7 +117,7 @@ Open the project root in MATLAB.
 Confirm that this file exists:
 
 ```text
-02_data/phase1_longitudinal_model.mat
+03_data/phase1_longitudinal_model.mat
 ```
 
 ### Step 3 — Run the software-only self-test
@@ -197,9 +197,9 @@ This means all four state perturbations are available as outputs.
 
 The system poles are the eigenvalues of `A`:
 
-$$
+```math
 \det(\lambda I-A)=0
-$$
+```
 
 The code computes:
 
@@ -209,33 +209,33 @@ lambda = eig(A);
 
 For each pole,
 
-$$
+```math
 \omega_n = |\lambda|
-$$
+```
 
 and, when $\omega_n \neq 0$,
 
-$$
-\zeta = -\frac{\operatorname{Re}(\lambda)}{|\lambda|}
-$$
+```math
+\zeta = -\frac{\mathrm{Re}(\lambda)}{|\lambda|}
+```
 
 For a complex pole,
 
-$$
+```math
 \lambda = \sigma \pm j\omega_d
-$$
+```
 
 the damped frequency is
 
-$$
-\omega_d = |\operatorname{Im}(\lambda)|
-$$
+```math
+\omega_d = |\mathrm{Im}(\lambda)|
+```
 
 and the oscillation period is
 
-$$
+```math
 T = \frac{2\pi}{\omega_d}.
-$$
+```
 
 ### F. Identifies the longitudinal modes
 
@@ -255,7 +255,7 @@ A commanded elevator step is simulated using `lsim`.
 
 The configured command is entered in degrees for readability. The code converts it to the model's declared elevator units.
 
-For example, if `02_data` declares:
+For example, if `03_data` declares:
 
 ```matlab
 model.input_units = ["rad"];
@@ -263,11 +263,11 @@ model.input_units = ["rad"];
 
 then:
 
-$$
+```math
 \delta_{e,\mathrm{rad}}
 =
 \delta_{e,\mathrm{deg}}\frac{\pi}{180}.
-$$
+```
 
 The sign convention still comes from the aircraft model. A positive numerical step does not automatically mean aircraft nose-up or nose-down.
 
@@ -275,26 +275,26 @@ The sign convention still comes from the aircraft model. A positive numerical st
 
 The Phase 1 pitch-rate damper is
 
-$$
+```math
 \delta_e = \delta_{e,cmd} - K_q q.
-$$
+```
 
 Because
 
-$$
+```math
 q = C_qx,
 \qquad
 C_q =
 \begin{bmatrix}
 0&0&1&0
 \end{bmatrix},
-$$
+```
 
 the closed-loop state matrix is
 
-$$
+```math
 A_{cl}=A-B_eK_qC_q.
-$$
+```
 
 The MATLAB implementation uses this exact equation.
 
@@ -359,17 +359,17 @@ A pole describes one natural behavior of the linearized system.
 
 If:
 
-$$
-\operatorname{Re}(\lambda)<0,
-$$
+```math
+\mathrm{Re}(\lambda)<0,
+```
 
 that mode decays with time.
 
 If:
 
-$$
-\operatorname{Re}(\lambda)>0,
-$$
+```math
+\mathrm{Re}(\lambda)>0,
+```
 
 that mode grows with time and is unstable.
 

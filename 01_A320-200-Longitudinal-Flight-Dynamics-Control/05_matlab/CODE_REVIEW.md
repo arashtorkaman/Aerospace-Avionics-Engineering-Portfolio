@@ -105,7 +105,7 @@ $$
 and:
 
 $$
-\zeta=-\frac{\operatorname{Re}(\lambda)}{|\lambda|}.
+\zeta=-\frac{\mathrm{Re}(\lambda)}{|\lambda|}.
 $$
 
 Confirmed that the code avoids division by zero for a zero pole.
@@ -115,7 +115,7 @@ Confirmed that the code avoids division by zero for a zero pole.
 Confirmed:
 
 $$
-\omega_d=|\operatorname{Im}(\lambda)|
+\omega_d=|\mathrm{Im}(\lambda)|
 $$
 
 and for an oscillatory mode:
@@ -129,7 +129,7 @@ $$
 For a pole with nonzero real part, the code uses:
 
 $$
-\tau=-\frac{1}{\operatorname{Re}(\lambda)}.
+\tau=-\frac{1}{\mathrm{Re}(\lambda)}.
 $$
 
 For stable poles with negative real part, this produces a positive decay time constant.
