@@ -12,20 +12,20 @@ It is an implementation review record, not a substitute for the formal verificat
 
 Confirmed that the code consistently uses:
 
-$$
+```math
 x =
 \begin{bmatrix}
 u&w&q&\theta
 \end{bmatrix}^{T}.
-$$
+```
 
 ### Linear state equation
 
 Confirmed:
 
-$$
+```math
 \dot{x}=Ax+B\delta_e.
-$$
+```
 
 ### Dimensions
 
@@ -60,31 +60,31 @@ therefore subtraction from `A` is dimensionally valid.
 
 Starting with:
 
-$$
+```math
 \delta_e=\delta_{e,cmd}-K_q q
-$$
+```
 
 and:
 
-$$
+```math
 q=C_qx,
-$$
+```
 
 then:
 
-$$
+```math
 \dot{x}
 =
 Ax+B_e(\delta_{e,cmd}-K_qC_qx)
-$$
+```
 
 which gives:
 
-$$
+```math
 \dot{x}
 =
 (A-B_eK_qC_q)x+B_e\delta_{e,cmd}.
-$$
+```
 
 Therefore the implemented closed-loop matrix
 
@@ -98,15 +98,15 @@ is algebraically correct for the stated control law.
 
 Confirmed:
 
-$$
+```math
 \omega_n=|\lambda|
-$$
+```
 
 and:
 
-$$
+```math
 \zeta=-\frac{\mathrm{Re}(\lambda)}{|\lambda|}.
-$$
+```
 
 Confirmed that the code avoids division by zero for a zero pole.
 
@@ -114,23 +114,23 @@ Confirmed that the code avoids division by zero for a zero pole.
 
 Confirmed:
 
-$$
+```math
 \omega_d=|\mathrm{Im}(\lambda)|
-$$
+```
 
 and for an oscillatory mode:
 
-$$
+```math
 T=\frac{2\pi}{\omega_d}.
-$$
+```
 
 ### Time constant
 
 For a pole with nonzero real part, the code uses:
 
-$$
+```math
 \tau=-\frac{1}{\mathrm{Re}(\lambda)}.
-$$
+```
 
 For stable poles with negative real part, this produces a positive decay time constant.
 
@@ -277,7 +277,7 @@ Two review passes completed:
 1. mathematical/interface review,
 2. MATLAB/defensive-programming review.
 
-Remaining project verification belongs in `07_verification` and must use the actual approved `02_data` values and the applicable Phase 1 requirements.
+Remaining project verification belongs in `07_verification` and must use the actual approved `03_data` values and the applicable Phase 1 requirements.
 
 
 ---
